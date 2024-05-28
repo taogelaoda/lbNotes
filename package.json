@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "preview": "vitepress preview docs",
+    "build": "vitepress build docs",
+    "postbuild": "node ./docs/public/deploy.js"
+  },
+  "dependencies": {
+    "gitalk": "^1.8.0",
+    "nodemailer": "^6.9.13",
+    "vitepress": "^1.2.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "chalk": "^5.3.0",
+    "ssh2-sftp-client": "^10.0.3"
+  }
+}
