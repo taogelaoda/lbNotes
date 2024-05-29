@@ -1,4 +1,17 @@
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
+
+// 发布要填的参数：
+// 通知接受者的邮箱
+const receverEmailList = [
+	'zhugt@lonbon.com'
+];
+// 内容
+const text = '';
+// 标题
+const subject = '';
+// 富文本（html形式）
+const html = '';
+
 const transporter = nodemailer.createTransport({
 	host: 'smtp.163.com',
 	port: 465,
@@ -12,9 +25,10 @@ const transporter = nodemailer.createTransport({
 async function main() {
 	const info = await transporter.sendMail({
 		from: 'zhugangtao98@163.com',
-		to: '331274350@qq.com,3123078600@qq.com,zhugt@lonbon.com',
-		subject: '来邦前端笔记',
-		text: '发布内容',
+		to: receverEmailList.join(','),
+		subject,
+		text,
+		html,
 	});
 	console.log('邮件发送成功：', info.messageId);
 }

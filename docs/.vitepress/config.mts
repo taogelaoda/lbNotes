@@ -19,6 +19,10 @@ export default defineConfig({
 						text: '写作规范',
 						link: '/others/write/01',
 					},
+					{
+						text: '开发规范',
+						link: '/others/dev/01',
+					},
 				],
 			},
 		],
@@ -116,7 +120,20 @@ function getWeappSideBar(): DefaultTheme.SidebarItem[] {
 }
 // 获取其他的侧边栏
 function getOthersSideBar(): DefaultTheme.SidebarItem[] {
-	return [{
-		text:'写作规范',link:'write/01'
-	}];
+	return [
+		{
+			text: '写作规范',
+			link: 'write/01',
+		},
+		{
+			text: '开发规范',
+			collapsed: false,
+			items: [
+				{
+					text: '来邦前端开发文档',
+					link: 'dev/01',
+				},
+			],
+		},
+	];
 }
