@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "dev": "vitepress dev docs",
+    "dev": "vitepress dev docs --host",
     "preview": "vitepress preview docs",
     "build": "vitepress build docs",
-    "postbuild": "node ./docs/public/deploy.js"
+    "postbuild": "node ./docs/public/deploy.js",
+    "notice":"node ./docs/public/notice.js"
   },
   "dependencies": {
     "gitalk": "^1.8.0",

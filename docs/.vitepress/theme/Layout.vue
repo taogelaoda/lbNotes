@@ -4,7 +4,7 @@ import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import { nextTick, provide } from 'vue';
 
-const { isDark } = useData();
+const { isDark, frontmatter, title } = useData();
 
 const enableTransitions = () => 'startViewTransition' in document && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
 
@@ -33,10 +33,32 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
 </script>
 
 <template>
-	<DefaultTheme.Layout />
+	<DefaultTheme.Layout>
+		<template #doc-footer-before
+			><div class="doc-author" v-if="frontmatter.author">作者：{{ frontmatter.author }}</div></template
+		>
+		<template #doc-after
+			><slot name="doc-after" />
+			<Comments v-if="!frontmatter.notComments" :key="title"/>
+		</template>
+	</DefaultTheme.Layout>
 </template>
 
 <style>
+.VPDocFooter {
+}
+.doc-author {
+	float: right;
+	line-height: 32px;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--vp-c-text-2);
+	margin-bottom: 14px;
+}
+.prev-next{
+	clear: both;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
 	animation: none;

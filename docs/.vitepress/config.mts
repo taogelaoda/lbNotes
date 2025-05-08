@@ -2,7 +2,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	title: 'Lb Notes',
+	title: 'Web Notes',
 	description: '来邦前端公共文档',
 	base: '/resource/notes/',
 	themeConfig: {
@@ -10,7 +10,7 @@ export default defineConfig({
 			apiKey: '3efa538d282edf27cb9edec74e7d7bd4',
 			indexName: 'nbtest-lonbon',
 			appId: 'ODSIFFK52F',
-			...getSearchOptions()
+			...getSearchOptions(),
 		},
 		// https://vitepress.dev/reference/default-theme-config
 		// search: {
@@ -18,19 +18,32 @@ export default defineConfig({
 		// },
 		nav: [
 			{ text: '首页', link: '/' },
-			{ text: 'Uniapp', link: '/uniapp/dev/01' },
 			{ text: 'Vue', link: '/vue/dev/01' },
-			{ text: 'Weapp', link: '/weapp/dev/01' },
+			{
+				text: 'React',
+				items: [
+					{
+						text: 'React',
+						link: '/react/dev/01',
+					},
+					{
+						text: 'NextJS',
+						link: '/react/next/01',
+					},
+				],
+			},
+			{ text: 'Uniapp', link: '/uniapp/dev/01' },
+			{ text: '工具包', link: '/tools/npm/lonbon-common' },
 			{
 				text: '其他',
 				items: [
 					{
-						text: '写作规范',
+						text: '相关规范',
 						link: '/others/write/01',
 					},
 					{
-						text: '开发规范',
-						link: '/others/dev/01',
+						text: '调研总结',
+						link: '/research/01',
 					},
 				],
 			},
@@ -39,7 +52,12 @@ export default defineConfig({
 			'/vue/': { base: '/vue/', items: getVueSideBar() },
 			'/uniapp/': { base: '/uniapp/', items: getUniappSideBar() },
 			'/weapp/': { base: '/weapp/', items: getWeappSideBar() },
+			'/tools/': { base: '/tools/', items: getToolsSideBar() },
+			'/node/': { base: '/node/', items: getNodeSideBar() },
 			'/others/': { base: '/others/', items: getOthersSideBar() },
+			'/research/': { base: '/research/', items: getResearchSideBar() },
+			'/react/': { base: '/react/', items: getReactSideBar() },
+			'/next/': { base: '/next/', items: getNextSideBar() },
 		},
 		docFooter: {
 			prev: '上一页',
@@ -78,17 +96,53 @@ function getVueSideBar(): DefaultTheme.SidebarItem[] {
 					text: '虚拟滚动组件',
 					link: 'dev/01',
 				},
+				{
+					text: '表格布局组件',
+					link: 'dev/02',
+				},
+				{
+					text: '二维码生成',
+					link: 'dev/03',
+				},
+				{
+					text: '基于localforage的浏览器存储INDEXEDDB的使用',
+					link: 'dev/04',
+				},
+				{
+					text: '关于html2canvas插件的踩坑',
+					link: 'dev/05',
+				},
+				{
+					text: 'axios取消请求大有用处',
+					link: 'dev/08',
+				},
+				{
+					text: '关于FormAdjust表单自定义组件使用方法.tmp',
+					link: 'dev/07',
+				},
+				{
+					text: '微组件-客服中心/插件中心等接入及使用',
+					link: 'dev/06',
+				},
 			],
 		},
 		{
 			text: '框架问题',
 			collapsed: false,
-			items: [{ text: '细节与踩坑', link: 'vue/01' }],
+			items: [
+				{ text: '细节与踩坑', link: 'vue/01' },
+				{ text: '基于京东MicroApp的微前端实现', link: 'others/02' },
+			],
 		},
 		{
 			text: '其他问题',
 			collapsed: false,
-			items: [],
+			items: [
+				{
+					text: 'FAQ',
+					link: 'others/01',
+				},
+			],
 		},
 	];
 }
@@ -98,7 +152,11 @@ function getUniappSideBar(): DefaultTheme.SidebarItem[] {
 		{
 			text: '开发问题',
 			collapsed: false,
-			items: [{ text: 'uniapp中实现海报分享', link: 'dev/01' }],
+			items: [
+				{ text: 'uniapp中实现海报分享', link: 'dev/01' },
+				{ text: 'uniapp中使用图表', link: 'dev/02' },
+				{ text: 'uniapp中使用mockjs', link: 'dev/03' },
+			],
 		},
 		{
 			text: '框架问题',
@@ -123,7 +181,12 @@ function getWeappSideBar(): DefaultTheme.SidebarItem[] {
 		{
 			text: '开发问题',
 			collapsed: false,
-			items: [],
+			items: [
+				{
+					text: '微信小程序开发问题',
+					link: '/dev/01',
+				},
+			],
 		},
 		{
 			text: '框架问题',
@@ -133,7 +196,33 @@ function getWeappSideBar(): DefaultTheme.SidebarItem[] {
 		{
 			text: '其他问题',
 			collapsed: false,
-			items: [],
+			items: [{ text: 'FAQ', link: 'weapp/01' }],
+		},
+	];
+}
+// 获取工具包的侧边栏
+function getToolsSideBar(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: 'lonbon-common',
+			link: 'npm/lonbon-common',
+		},
+		{
+			text: 'lonbon-map',
+			link: 'npm/lonbon-map',
+		},
+		{
+			text: 'lonbon-device',
+			link: 'npm/lonbon-device',
+		},
+	];
+}
+// 获取nodejs的侧边栏
+function getNodeSideBar(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: 'ai智能操作指引',
+			link: 'dev/01',
 		},
 	];
 }
@@ -146,17 +235,47 @@ function getOthersSideBar(): DefaultTheme.SidebarItem[] {
 		},
 		{
 			text: '开发规范',
-			collapsed: false,
+			link: 'dev/01',
+		},
+	];
+}
+// 获取调研总结的侧边栏
+function getResearchSideBar(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: '调研总结',
+			link: '01',
+		},
+	];
+}
+//
+function getReactSideBar(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: 'react',
+			link: 'dev/01',
+		},
+		{
+			text: '其他问题',
 			items: [
 				{
-					text: '来邦前端开发文档',
-					link: 'dev/01',
+					text: 'react常用技术栈',
+					link: 'others/01',
 				},
 			],
 		},
 	];
 }
-
+// nextjs的侧边栏
+function getNextSideBar(): DefaultTheme.SidebarItem[] {
+	return [
+		{
+			text: 'next入门',
+			link: 'dev/01',
+		},
+	];
+}
+// 搜索框的配置
 function getSearchOptions() {
 	return {
 		placeholder: '搜索文档',

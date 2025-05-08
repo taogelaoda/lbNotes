@@ -1,62 +1,14 @@
+---
+author: 王耀
+---
 # lonbon-common-plus 使用文档
 
-<!-- 1.修订历史
-版本号	更新时间	作者	备注
-V10.1.0	2024-01-30	王耀	接入文档 -->
+## 一、修订历史
+|版本号|	更新时间|	作者|	备注|
+| :----: | :----: | :----: |:----:|
+|V10.1.0|	2024-01-30|	王耀|	接入文档|
 
-## 使用插件
-
-### 项目环境
-
-- node v18.19.0
-- npm v10.2.3
-- vite v5.0.8
-- vue v3.3.11
-
-[环境搭建参考文章](https://zhuanlan.zhihu.com/p/654327710)
-
-### nvm 常用命令：用于管理 node
-
-```bash
-# 显示可以安装的所有nodejs版本
-nvm list available
- # 安装指定版本的nodejs
-nvm install <version>
-# 显示已安装版本列表
-nvm list
-# 使用指定版本node
-nvm use [version]
-# 卸载指定版本node
-nvm uninstall <version>
-
-```
-
-### nrm 常用命令：用于管理 npm
-
-```bash
-# 查看镜像列表
-nrm ls
-# 查看当前使用的镜像
-nrm current
-# 添加镜像
-nrm add <名称> <远程地址或私服地址>
-# 删除镜像
-nrm del <名称>
-# 切换镜像
-nrm use <名称>
-# 测试镜像网络传输速度
-nrm test <名称>
-# 查看nrm版本号
-nrm <-version | -V>
-# 查看nrm相关信息
-nrm <-help | -h>
-# 打开镜像主页
-nrm home <名称> [browser]
-# 上传npm包或命令程序
-nrm publish [<tarball>|<folder>]
-```
-
-### 安装说明
+## 二、安装插件
 
 ```bash
 npm i lonbon-common@latest -S
@@ -66,9 +18,13 @@ npm i lonbon-common@latest -S
 当前仍使用`lonbon-common`进行安装
 :::
 
-## 组件介绍
+## 三、组件介绍
 
-### 全局组件
+::: tip
+以下仅针对vue3版本的内容介绍
+:::
+
+### 1、全局组件
 
 说明：无需引入，直接使用
 
@@ -167,7 +123,7 @@ npm i lonbon-common@latest -S
   |show-checkbox |是否显示复选框| Boolean |false|
   |check-half |是否将半选转换成勾选| Boolean |false|
   |request |接口请求函数 |Function| null|
-  |props| 配置选项 |Object |`{ children,label,key,disabled,suffix,icon}`|
+  |props| 配置选项 |Object |`{ children, label, key, disabled, suffix, icon}`|
 
 - 方法：
   | 方法名 | 说明 | 回调参数 |
@@ -187,11 +143,11 @@ npm i lonbon-common@latest -S
   |node-expand |节点展开时触发 当前节点数据 |data|
   |node-click| 节点点击时触发 当前节点数据| data|
 
-### 应用组件
+### 2、应用组件
 
 说明：引入方式为 lonbon-common/plus/components/\*\*.vue
 
-#### address-cascader 行政区域级联
+#### addressCascader 行政区域级联
 
 - 属性：
   | 属性名 | 说明 | 类型 |默认值 |
@@ -215,7 +171,7 @@ npm i lonbon-common@latest -S
   | :----: | :----------------: | :----------------------: |
   | change | 行政区域改变时触发 | `{regionId, regionDesc}` |
 
-#### address-select 行政区域下拉选（横向，竖向）
+#### addressSelect 行政区域下拉选（横向）
 
 - 属性：
 
@@ -240,7 +196,10 @@ npm i lonbon-common@latest -S
   | :----: | :------------------------------------------: | :------: |
   | change | 行政区域改变时触发 `{regionId, regionDesc} ` |    无    |
 
-#### upload-file 文件上传
+#### addressSelect2 行政区域下拉选（竖向）
+- 同上
+
+#### uploadFile 文件上传
 
 - 属性：
 
@@ -269,7 +228,7 @@ npm i lonbon-common@latest -S
   | :----: | :---------------------------------------: | :------: |
   | change | 文件上传结果集改变时触发 文件上传的结果集 |    无    |
 
-#### upload-file 文件上传（特殊）
+#### uploadFile2 文件上传（特殊）
 
 - 属性：
 
@@ -295,7 +254,7 @@ npm i lonbon-common@latest -S
   | :----: | :---------------------------------------: | :------: |
   |change| 文件上传结果集改变时触发 文件上传的结果集|无|
 
-#### upload-image 图片上传
+#### uploadImage 图片上传
 
 - 属性：
 
@@ -314,7 +273,7 @@ npm i lonbon-common@latest -S
   | :---------------: | :----------------------------------: | :---------------------------------------: |
   |       init        |                初始化                | 非必填，文件数组`[{attname, remotePath}]` |
   |       reset       |                 重置                 |                    无                     |
-  |     getReset      |       获取文件上传结果，含文件       |                    无                     |
+  |     getResult      |       获取文件上传结果，含文件       |                    无                     |
   |  getSimpleResult  |      获取文件上传结果，不含文件      |                    无                     |
   | getUploadedResult | 获取已上传服务器的文件结果，不含文件 |                    无                     |
 
@@ -323,7 +282,7 @@ npm i lonbon-common@latest -S
   | :----: | :---------------------------------------: | :------: |
   |change| 文件上传结果集改变时触发 |文件上传的结果集|
 
-#### upload-poster 头像上传
+#### uploadPoster 头像上传
 
 - 属性：
 
@@ -338,7 +297,7 @@ npm i lonbon-common@latest -S
   | :----: | :----------------------: | :--------------: |
   | change | `model-value` 改变时触发 | `model-value` 值 |
 
-#### map-search 地图选点
+#### mapSearch 地图选点
 
 - 属性
 
@@ -359,13 +318,13 @@ npm i lonbon-common@latest -S
   | :----: | :----------------: | :------------: |
   | change | 点击确定按钮时触发 | 地图所选点信息 |
 
-#### voice-player 音频播放
+#### voicePlayer 音频播放
 
 - 属性：
   | 属性名 | 说明 | 类型 |默认值 |
   | :----: | :----: | :----: |:----:|
   |voice-url| 音频文件路径| String |空|
-  |error-msg |错误提示语| String |当前音频文件不存在，请稍后再试|
+  |error-msg| 错误提示语| String |当前音频文件不存在，请稍后再试|
 - 方法：
 
   | 方法名 |   说明   | 回调参数 |
@@ -379,9 +338,9 @@ npm i lonbon-common@latest -S
   | :--------: | :----------------: | :------: |
   | voice-play | 音频开始播放时触发 |    无    |
 
-## 指令介绍
+## 四、指令介绍
 
-### 全局指令
+### 1、全局指令
 
 - v-integer 整数
   :::tip
@@ -389,9 +348,9 @@ npm i lonbon-common@latest -S
   :::
 - v-decimal 小数
 
-## 公共方法
+## 五、公共方法
 
-### 工具方法
+### 1、工具方法
 
 使用方式如下：
 
@@ -435,7 +394,7 @@ const { $setTimeout } = useCommonUtil();
 - $checkForbidCenterDeal 判断是否禁止守护中心处理
 - $checkActiveHeartError 判断是否为非静止（活动）状态下触发的心率异常报警
 
-### 校验方法
+### 2、校验方法
 
 - 使用方式如下
 
@@ -467,23 +426,30 @@ const rules = ref({
 - $validate.username 用户名校验
 - $validate.password 密码校验
 
-### 应用 hooks
+### 3、应用 hooks
 
 - 列表查询
 
 ```js
-import { useListHook } from 'lonbon-common/plus';
+import { useListHook, useSearchTime } from 'lonbon-common/plus';
+
+const searchTime = useSearchTime({ searchForm, timeType: 'month'})
+const { beginDateChange, endDateChange, disabledDate } = searchTime
+
+const searchTime2 = useSearchTime({ searchForm, timeType: 'date', keys: ['startT2', 'endT2', 'startTime2', 'endTime2'] })
+const { beginDateChange2, endDateChange2, disabledDate2 } = searchTime2
+
 const { page, limit, total, tabLoading, dataList, selectList, beginDateChange, endDateChange, disabledDate, getNo, resetList, searchList, loadList, handleSelectionChange, handleSizeChange, handleCurrentChange, sortChange } = useListHook({
-	size: 20,
-	searchForm,
-	timeType: 'month',
-	url: '/api/v3.0/integrate/inventory/warehouse',
-	beforeRequest(e) {
-		e.startTime = moment(e.startT).format('YYYY-MM');
-		e.endTime = moment(e.endT).format('YYYY-MM');
-		return e;
-	},
-	afterRequest(e) {},
+  size: 20,
+  searchForm,
+  searchTime: [searchTime, searchTime2],
+  url: '/api/v3.0/integrate/inventory/warehouse',
+  beforeRequest(e) {
+    e.startTime = moment(e.startT).format('YYYY-MM');
+    e.endTime = moment(e.endT).format('YYYY-MM');
+    return e;
+  },
+  afterRequest(e) {},
 });
 ```
 
@@ -502,9 +468,11 @@ const { removeCurrentTab, routerPush } = useRouterHook();
 
 function openTab() {
 	routerPush({
-		title: '新选项卡',
-		path: '/demo1',
-	});
+    title, //打开新的选项卡时必传
+    path, //路由地址
+    app, //子应用名称，不传默认当前子应用
+    query //携带参数
+  })
 }
 function closeTab() {
 	removeCurrentTab(() => {
@@ -530,11 +498,11 @@ onSocketData(e => {
 });
 ```
 
-### 呼叫中心相关
+- 呼叫中心相关
 
 ```js
 import { useCallHook } from 'lonbon-common/plus';
-const { onCallData, onCallPhone, callInstance, callPhone, openCall } = useCallHook();
+const { onCallData, onCallPhone, callInstance, callPhone } = useCallHook();
 onCallData(e => {
 	console.log(e);
 });
@@ -543,72 +511,74 @@ onCallPhone(e => {
 });
 ```
 
-## 项目配置
+## 五、项目配置示例
 
 ```js
-import { createApp } from 'vue';
-import App from './App.vue';
-import { useAppMessages } from './assets/langs';
-import { useAppRoutes } from './assets/routers';
-import { useMicroComponents } from './assets/micros';
-import { useAppRequests } from './assets/requests';
-import { createAxiosPlus, createRouterPlus, createI18nPlus, createDirectivePlus, createGlobalComponent } from 'lonbon-common/plus';
-import 'lonbon-common/plus/styles/index.scss';
-import ElementPlus from 'element-plus';
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs';
-import 'viewerjs/dist/viewer.css';
-import Viewer from 'v-viewer';
+import { createApp } from 'vue'
+import App from './App.vue'
+import { useAppMessages } from './assets/langs'
+import { useAppRoutes } from './assets/routers'
+import { useMicroComponents } from './assets/micros'
+import { useAppRequests } from './assets/requests'
+import { createAxiosPlus, createRouterPlus, createI18nPlus, createDirectivePlus, createGlobalComponent } from 'lonbon-common/plus'
+import "lonbon-common/plus/styles/index.scss"
+import ElementPlus from 'element-plus'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
 
-let app = null;
+let app = null
 function render(props = {}) {
-	const { store } = props;
-	app = createApp(App);
-	app.config.warnHandler = () => null;
-	app.config.globalProperties.$store = store;
-	app.use(createRouterPlus(), {
-		routePrefix: window.__MICRO_APP_BASE_ROUTE__,
-		routes: useAppRoutes,
-		micros: useMicroComponents,
-	});
-	app.use(createI18nPlus(), {
-		messages: useAppMessages,
-	});
-	app.use(createAxiosPlus(), {
-		baseURL: sessionStorage.cmsURL,
-		requests: useAppRequests,
-	});
-	app.use(createDirectivePlus());
-	app.use(createGlobalComponent());
-	app.use(ElementPlus, {
-		locale: zhCn,
-	});
-	app.use(Viewer);
-	app.mount('#app');
+    const { store } = props;
+    app = createApp(App)
+    app.config.warnHandler = () => null
+    app.config.globalProperties.$store = store
+    app.use(createRouterPlus(), {
+        routePrefix: window.__MICRO_APP_BASE_ROUTE__ || '', 
+        routes: useAppRoutes,
+        micros: useMicroComponents
+    })
+    app.use(createI18nPlus(), {
+        messages: useAppMessages
+    })
+    app.use(createAxiosPlus(), {
+        baseURL: sessionStorage.cmsURL,
+        requests: useAppRequests
+    })
+    app.use(createDirectivePlus())
+    app.use(createGlobalComponent())
+    app.use(ElementPlus, {
+        locale: zhCn,
+        zIndex: 3000
+    })
+    app.use(Viewer);
+    app.mount('#app');
 }
 
-window.mount = () => {
-	window._ = window.rawWindow._;
-	window.$ = window.rawWindow.$;
-	window.AMap = window.rawWindow.AMap;
-	window._AMapSecurityConfig = window.rawWindow._AMapSecurityConfig;
-	window.accountStorage = window.rawWindow.accountStorage;
-	const props = window.microApp.getData();
-	render(props);
-};
-window.unmount = () => {
-	app.unmount();
-	app._container.innerHTML = '';
-	app = null;
-};
-window.microApp.addDataListener(async ({ action, data }) => {
-	if (action == 'Route') {
-		const { path, query, params } = data;
-		const router = app.config.globalProperties.$router;
-		router.push({ path, query, params });
-		return;
-	}
-});
+if (window.__MICRO_APP_ENVIRONMENT__) {
+    window.mount = () => {
+        window._ = window.rawWindow._
+        window.$ = window.rawWindow.$
+        window.AMap = window.rawWindow.AMap
+        window._AMapSecurityConfig = window.rawWindow._AMapSecurityConfig
+        window._globalProperties = window.rawWindow._globalProperties
+        window.accountStorage = window.rawWindow.accountStorage
+        const props = window.microApp.getData()
+        render(props);
+    }
+    window.unmount = () => {
+        app.unmount()
+        app._container.innerHTML = ''
+        app = null
+    }
+    window.microApp.addDataListener(async ({action, data}) => {
+        if(action == 'Route') {
+            const router = app.config.globalProperties.$router
+            router.replace(data)
+            return
+        }
+    })
+} else {
+    render()
+}
 ```
-
-<!-- 评论组件 -->
-<Comments/>

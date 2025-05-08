@@ -21,10 +21,10 @@ function deployApp(local, remote) {
 }
 const config = {
 	ssh: {
-		host: '120.25.250.39',
+		host: '36.7.99.163',
 		port: '23022',
 		username: 'root',
-		password: '2018@Sz-LonBondep;',
+		password: '2024@HF-LonBondep',
 	},
 	localPath: `../.vitepress/dist/`,
 	remotePath: `/usr/local/nginx/nb_html/resource/notes/`,
